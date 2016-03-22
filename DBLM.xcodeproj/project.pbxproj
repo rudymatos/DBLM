@@ -138,7 +138,6 @@
 				F5AC06E51C7F8EB300032DAF /* League */,
 				F592F16A1C771B4300096772 /* Post Login */,
 				F594D7D21C7393E4008FC054 /* Login and Register */,
-				F505A12D1C70FDDB005D5CE7 /* AssistanceConfirmationViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -174,6 +173,14 @@
 				F53633401C94C3240024C659 /* LeagueRole.swift */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		F524A15E1CA0FEB300B74E6E /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				F505A12D1C70FDDB005D5CE7 /* AssistanceConfirmationViewController.swift */,
+			);
+			name = Member;
 			sourceTree = "<group>";
 		};
 		F55239A41C7001E40042AF28 = {
@@ -230,6 +237,7 @@
 		F5AC06E51C7F8EB300032DAF /* League */ = {
 			isa = PBXGroup;
 			children = (
+				F524A15E1CA0FEB300B74E6E /* Member */,
 				F5AE3F661C8379BC000DC4B6 /* Admin */,
 				F5AC06E61C7F8ED500032DAF /* LeagueOptionsViewController.swift */,
 				F5AC06EC1C7FC8DB00032DAF /* LeagueOptionTableViewCell.swift */,

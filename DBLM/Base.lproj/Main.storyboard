@@ -82,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXL-eM-h1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3608" y="1781"/>
+            <point key="canvasLocation" x="2956" y="1881"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="Lgf-id-UNH">
@@ -1067,7 +1067,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="3625" y="1245"/>
+            <point key="canvasLocation" x="3608" y="1109"/>
         </scene>
         <!--Create New League View Controller-->
         <scene sceneID="uNM-3z-VOf">
@@ -1477,20 +1477,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Create Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh9-aH-XGg">
-                                <rect key="frame" x="81" y="76" width="158" height="26"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Schedule" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mh9-aH-XGg">
+                                <rect key="frame" x="81" y="120" width="157.5" height="26"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="22"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Day is currently Closed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1O-EN-KzX">
-                                <rect key="frame" x="96" y="110" width="128" height="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day is currently Closed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1O-EN-KzX">
+                                <rect key="frame" x="96" y="154" width="128" height="17"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BH-Mu-N5p">
-                                <rect key="frame" x="105" y="462" width="110" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7BH-Mu-N5p">
+                                <rect key="frame" x="105" y="506" width="110" height="30"/>
                                 <color key="backgroundColor" red="0.1019607843" green="0.76470588240000004" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="MXv-Y3-55k"/>
@@ -1503,15 +1503,15 @@
                                     <action selector="takeActionOnDay:" destination="8pE-0C-liT" eventType="touchUpInside" id="eRg-G5-GQI"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="createSchedule" translatesAutoresizingMaskIntoConstraints="NO" id="nvZ-K5-iVy">
-                                <rect key="frame" x="85" y="149" width="150" height="130"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="createSchedule" translatesAutoresizingMaskIntoConstraints="NO" id="nvZ-K5-iVy">
+                                <rect key="frame" x="85" y="193" width="150" height="130"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="130" id="7xx-f4-BWj"/>
                                     <constraint firstAttribute="width" constant="150" id="D6T-MD-MBf"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwX-O1-FNE">
-                                <rect key="frame" x="7" y="301" width="306" height="97"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwX-O1-FNE">
+                                <rect key="frame" x="7" y="345" width="306" height="97"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="306" id="Yry-W3-iKt"/>
                                     <constraint firstAttribute="height" constant="97" id="mqG-Zq-k3q"/>
