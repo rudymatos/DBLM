@@ -53,7 +53,12 @@ class CreateNewAccountViewController: UIViewController {
             blInstance.userService.registering(user, response: { (registeredUser : BackendlessUser!) -> () in
                 let dataStore = self.blInstance.data.of(Member.ofClass())
                 dataStore.save(member, response: { (savedObject : AnyObject!) -> Void in
-                    self.userHelper.processUserInformation(self)
+                    self.blInstance.userService.login(email, password: password, response: { (loggedUser : BackendlessUser!) -> Void in
+                        self.userHelper.processUserInformation(self)
+                        }, error: { (error: Fault!) -> Void in
+                            self.alertHelper.createSimpleNotificationAlert(self, title: "Error authenticating user", message: error.message, shouldDismissCurrentView: true, completion: nil)
+                    })
+                    
                     }, error: { (error: Fault!) -> Void in
                         self.alertHelper.createSimpleNotificationAlert(self, title: "Error creating user", message: error.message, shouldDismissCurrentView: false, completion: nil)
                         self.createAccountButton.enabled = true

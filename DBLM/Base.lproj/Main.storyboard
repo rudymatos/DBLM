@@ -522,7 +522,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3147" y="-749"/>
+            <point key="canvasLocation" x="1713" y="-495"/>
         </scene>
         <!--Join League View Controller-->
         <scene sceneID="ZpK-QB-Uwu">
@@ -1345,6 +1345,7 @@
                         <outlet property="firstnameLabel" destination="nD1-yX-ebs" id="G3n-WQ-46P"/>
                         <outlet property="lastnameLabel" destination="6Vu-Uv-AGr" id="lso-dX-vDf"/>
                         <outlet property="passwordLabel" destination="SK0-R9-yZz" id="bwi-qH-FqH"/>
+                        <segue destination="yBe-Gq-Zi6" kind="modal" identifier="noLeagueSegue" id="tgr-VE-X6Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ceZ-k1-H3q" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1562,7 +1563,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="PPo-Np-uO5"/>
-        <segue reference="Ibb-uC-Z8x"/>
+        <segue reference="tgr-VE-X6Z"/>
         <segue reference="w5B-IG-g8c"/>
     </inferredMetricsTieBreakers>
 </document>

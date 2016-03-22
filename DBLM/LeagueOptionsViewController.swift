@@ -15,6 +15,7 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     var currentLeagueRole : LeagueRole?
     private var allOptions = [[Option]]()
     private var sections = [String]()
+    private let userHelper = UserHelper.createStaticInstance
     private let alertHelper = AlertsHelper.createStaticInstance
     
     override func viewDidLoad() {
@@ -68,9 +69,10 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     @IBAction func logout(sender: UITapGestureRecognizer) {
-        if let currentUser = FireBaseHelper.createStaticInstance.currentUser(){
+        if let currentUser = userHelper.currentMember{
             CommonHelper().createLogoutConfirmationAlert(currentUser, currentView: self)
         }
+        
     }
     
     
@@ -123,8 +125,8 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let available = allOptions[indexPath.section][indexPath.row].available, let segueToPerform = allOptions[indexPath.section][indexPath.row].segueName{
+            tableView.deselectRowAtIndexPath(indexPath, animated: true)
             if available{
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
                 performSegueWithIdentifier(segueToPerform, sender: nil)
             }else{
                 alertHelper.createSimpleNotificationAlert(self, title: "Not Available", message: "Option is not currently available", shouldDismissCurrentView: false, completion: nil)

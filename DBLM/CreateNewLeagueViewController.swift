@@ -99,12 +99,6 @@ class CreateNewLeagueViewController: UIViewController {
         }
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let selectLeagueVC = segue.destinationViewController as? SelectLeageViewController{
-            userHelper.refreshMemberInfo()
-            selectLeagueVC.member = userHelper.currentMember
-        }
-    }
     
     
     @IBAction func goBackToNoTeamPage(sender: UITapGestureRecognizer) {

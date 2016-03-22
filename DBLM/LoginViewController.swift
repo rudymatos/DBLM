@@ -50,14 +50,6 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let navigationController  = segue.destinationViewController as? UINavigationController{
-            if let selectLeagueVC = navigationController.topViewController as? SelectLeageViewController{
-                selectLeagueVC.member = userHelper.currentMember
-            }
-        }
-    }
-    
     @IBAction func loginUser(sender: UIButton) {
         
         if let  email = usernameLabel.text, let password = passwordLabel.text{

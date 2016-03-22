@@ -73,12 +73,12 @@ class JoinLeagueViewController: UIViewController {
     @IBAction func joinLeague(sender: UIButton) {
         
         let leagueRole = LeagueRole()
-        let currentUser = blInstance.userService.currentUser
+        let currentUser = userHelper.currentMember
         leagueRole.role = Role.REGULAR_MEMBER.rawValue
         leagueRole.league = league
         var leaguesRoles : [LeagueRole]
         
-        if let leaguesRolesArrayFromUser = currentUser.getProperty("leaguesRoles") as? [LeagueRole]{
+        if let leaguesRolesArrayFromUser = currentUser?.leaguesRoles{
             leaguesRoles = leaguesRolesArrayFromUser
         }else{
             leaguesRoles = [LeagueRole]()
@@ -91,8 +91,8 @@ class JoinLeagueViewController: UIViewController {
         }
         
         leaguesRoles.append(leagueRole)
-        currentUser.setProperty("leaguesRoles", object: leaguesRoles)
-        blInstance.userService.update(currentUser, response: { (updatedUser : BackendlessUser!) -> Void in
+        currentUser?.leaguesRoles = leaguesRoles
+        blInstance.data.of(Member.ofClass()).save(currentUser, response: { (updatedUser : AnyObject!) -> Void in
             self.blInstance.data.of(League.ofClass()).save(self.league, response: { (savedObject : AnyObject!) -> Void in
                 self.performSegueWithIdentifier("selectLeagueSegue", sender: nil)
                 }, error: {(error : Fault!) -> Void in
@@ -103,10 +103,5 @@ class JoinLeagueViewController: UIViewController {
         })
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let selectLeagueVC = segue.destinationViewController as? SelectLeageViewController{
-            userHelper.refreshMemberInfo()
-            selectLeagueVC.member = userHelper.currentMember
-        }
-    }
+    
 }

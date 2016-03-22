@@ -11,30 +11,31 @@ import Firebase
 
 class CommonHelper{
     
-    private func logoutUser(user:Firebase, currentView : UIViewController){
-        user.unauth()
-        let loginView = currentView.storyboard?.instantiateViewControllerWithIdentifier("loginView")
-        UIApplication.sharedApplication().keyWindow?.rootViewController = loginView
+    private let blInstance = BackendlessHelper.createInstance.getBackendlessInstance()
+    private let alertHelper = AlertsHelper.createStaticInstance
+    
+    private func logoutUser(user:Member, currentView : UIViewController){
+        blInstance.userService.logout({ (response:AnyObject!) -> Void in
+            let loginView = currentView.storyboard?.instantiateViewControllerWithIdentifier("loginView")
+            UIApplication.sharedApplication().keyWindow?.rootViewController = loginView
+            }, error: { (error:Fault!) -> Void in
+                self.alertHelper.createSimpleNotificationAlert(currentView, title: "Logout Error", message: "There was an error trying to logout the user with message \(error.message)", shouldDismissCurrentView: false, completion: nil)
+                
+        })
     }
     
-    func createLogoutConfirmationAlert(user : Firebase, currentView : UIViewController){
+    func createLogoutConfirmationAlert(user : Member, currentView : UIViewController){
         let alert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .Alert)
-        
         let logout = UIAlertAction(title: "Yeah, log me out", style: UIAlertActionStyle.Destructive){ action in
             self.logoutUser(user, currentView: currentView)
         }
-        
         let cancel = UIAlertAction(title:"Cancel" , style: .Default, handler:nil)
-        
         alert.addAction(logout)
         alert.addAction(cancel)
-        
         currentView.presentViewController(alert, animated: true, completion: nil)
-        
     }
     
     func generateLCode() -> String{
-        
         let  letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890"
         var code = ""
         for _ in 1...10{

@@ -12,7 +12,9 @@ import Firebase
 class SelectLeageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var leaguesTableView: UITableView!
     private var currentIndex = 1
-    var member : Member?
+    private let userHelper = UserHelper.createStaticInstance
+    private var member : Member?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,7 @@ class SelectLeageViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func configureView(){
+        member = userHelper.currentMember
         self.automaticallyAdjustsScrollViewInsets = false
         leaguesTableView.rowHeight = 110
         currentIndex = 1
@@ -62,7 +65,7 @@ class SelectLeageViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (member?.leaguesRoles?.count)!
+        return member?.leaguesRoles?.count ?? 0
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

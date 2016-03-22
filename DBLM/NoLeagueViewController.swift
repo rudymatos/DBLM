@@ -20,6 +20,7 @@ class NoLeagueViewController: UIViewController {
     @IBOutlet weak var cancelPanel: UIView!
     var isComingFromSelectLeague = false
     private let alertHelper = AlertsHelper.createStaticInstance
+    private let userHelper = UserHelper.createStaticInstance
     private let blInstance = BackendlessHelper.createInstance.getBackendlessInstance()
     
     override func viewDidLoad() {
@@ -56,7 +57,7 @@ class NoLeagueViewController: UIViewController {
     }
     
     @IBAction func logoutUser(sender: UITapGestureRecognizer) {
-        if let currentUser = FireBaseHelper.createStaticInstance.currentUser(){
+        if let currentUser = userHelper.currentMember{
             CommonHelper().createLogoutConfirmationAlert(currentUser, currentView: self)
         }
     }
@@ -77,11 +78,16 @@ class NoLeagueViewController: UIViewController {
             
             joinLeagueButton.enabled = false
             let dataQuery = BackendlessDataQuery()
+            let queryOptions = QueryOptions()
+            queryOptions.related = ["lcode"]
             dataQuery.whereClause = "lCode.code = \'\(code)\'"
+            dataQuery.queryOptions = queryOptions
             
             //Making the request
             blInstance.data.of(League.ofClass()).find(dataQuery, response: { (results : BackendlessCollection!) -> Void in
                 if results.data.count > 0{
+                    print(results.data)
+                    print(results.data[0])
                     if let league = results.data[0] as? League, let lCodeCreatedOn = league.lcode.createdOn{
                         let interval = NSDate().timeIntervalSinceDate(NSDate(timeIntervalSince1970: lCodeCreatedOn.timeIntervalSince1970))
                         if (interval / 60) > 15{
