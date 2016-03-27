@@ -12,6 +12,7 @@ import Foundation
 
 class Member : NSObject{
     
+    var objectId: String?
     var blUser : BackendlessUser?
     var username : String?
     var mobilePhone : String?

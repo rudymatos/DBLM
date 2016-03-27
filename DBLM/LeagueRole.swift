@@ -10,6 +10,7 @@ import Foundation
 
 class LeagueRole : NSObject{
     
+    var objectId: String?
     var league : League?
     var role : String?
     var playerNumber : NSNumber?

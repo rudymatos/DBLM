@@ -21,6 +21,7 @@
 		F55239B61C7001E40042AF28 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55239B41C7001E40042AF28 /* Main.storyboard */; };
 		F55239B81C7001E40042AF28 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55239B71C7001E40042AF28 /* Assets.xcassets */; };
 		F55239BB1C7001E40042AF28 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F55239B91C7001E40042AF28 /* LaunchScreen.storyboard */; };
+		F56C65761CA22C1800B74E11 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F56C65751CA22C1800B74E11 /* Day.swift */; };
 		F592F1671C76CF8800096772 /* NoLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F592F1661C76CF8800096772 /* NoLeagueViewController.swift */; };
 		F592F1691C76D3DD00096772 /* League.swift in Sources */ = {isa = PBXBuildFile; fileRef = F592F1681C76D3DD00096772 /* League.swift */; };
 		F592F16C1C771B6D00096772 /* CreateNewLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F592F16B1C771B6D00096772 /* CreateNewLeagueViewController.swift */; };
@@ -66,6 +67,7 @@
 		F55239B71C7001E40042AF28 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F55239BA1C7001E40042AF28 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F55239BC1C7001E40042AF28 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F56C65751CA22C1800B74E11 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		F592F1661C76CF8800096772 /* NoLeagueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoLeagueViewController.swift; sourceTree = "<group>"; };
 		F592F1681C76D3DD00096772 /* League.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = League.swift; sourceTree = "<group>"; };
 		F592F16B1C771B6D00096772 /* CreateNewLeagueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateNewLeagueViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				F5AE3F5E1C835E2A000DC4B6 /* Member.swift */,
 				F5AE3F601C835FA3000DC4B6 /* Role.swift */,
 				F53633401C94C3240024C659 /* LeagueRole.swift */,
+				F56C65751CA22C1800B74E11 /* Day.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 			files = (
 				F5E7C2CA1C8B351C00CE0A08 /* UserCreationException.swift in Sources */,
 				F505A1261C7035BC005D5CE7 /* Option.swift in Sources */,
+				F56C65761CA22C1800B74E11 /* Day.swift in Sources */,
 				F505A12E1C70FDDB005D5CE7 /* AssistanceConfirmationViewController.swift in Sources */,
 				F5F1E2F81C884D55007B3CA9 /* GenerateLCodeViewController.swift in Sources */,
 				F5D7F7A01C869ED600E4A34F /* UserHelper.swift in Sources */,

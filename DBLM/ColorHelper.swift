@@ -31,6 +31,7 @@ class ColorHelper{
     enum ColorByAvailableness{
         case Available
         case Unavailable
+        case Neutral
     }
     
     func getAvailableOrUnavailableColor(available : ColorByAvailableness) -> UIColor{
@@ -39,7 +40,8 @@ class ColorHelper{
             return UIColor(red: 34/255.0, green: 204/255.0, blue: 202/255.0, alpha: 1)
         case .Unavailable:
             return UIColor(red: 255/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1)
-            
+        case .Neutral:
+            return UIColor(red: 170/255.0, green: 170/255.0, blue: 170/255.0, alpha: 1)
         }
     }
 }

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DBLM/Option.swift"
-            timestampString = "480309567.814615"
+            timestampString = "480695074.338448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "init(configurationDictionary:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DBLM/Option.swift"
-            timestampString = "480309567.814615"
+            timestampString = "480695074.338448"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "init(configurationDictionary:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -252,6 +252,69 @@
                   startingLineNumber = "14"
                   endingLineNumber = "14"
                   offsetFromSymbolStart = "88">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DBLM/Day.swift"
+            timestampString = "480700865.782933"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "14"
+            endingLineNumber = "14"
+            landmarkName = "Day"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DBLM.Day.possibleParticipants.getter : Swift.Optional&lt;Swift.Array&lt;DBLM.Member&gt;&gt;"
+                  moduleName = "DBLM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rudymatos/Documents/ios_app/Portafolio/DBLM/DBLM/Day.swift"
+                  timestampString = "480401400.037289"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DBLM.Day.possibleParticipants.materializeForSet : Swift.Optional&lt;Swift.Array&lt;DBLM.Member&gt;&gt;"
+                  moduleName = "DBLM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rudymatos/Documents/ios_app/Portafolio/DBLM/DBLM/Day.swift"
+                  timestampString = "480401400.037616"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DBLM.Day.init (DBLM.Day.Type)() -&gt; DBLM.Day"
+                  moduleName = "DBLM"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/rudymatos/Documents/ios_app/Portafolio/DBLM/DBLM/Day.swift"
+                  timestampString = "480401400.03776"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "24">
                </Location>
             </Locations>
          </BreakpointContent>

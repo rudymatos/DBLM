@@ -28,5 +28,20 @@ class AlertsHelper{
         
     }
     
+    func createNotificationInNavigationViewController(view : UIViewController , title : String, message : String, shouldDismissCurrentView : Bool){
+        view.view.endEditing(true)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        var okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        if shouldDismissCurrentView {
+            okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action) in
+               view.navigationController?.popViewControllerAnimated(true)
+            })
+        }
+        alert.addAction(okAction)
+        view.presentViewController(alert, animated: true, completion: nil)
+
+        
+    }
+    
     
 }

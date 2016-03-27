@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class SelectLeageViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     @IBOutlet weak var leaguesTableView: UITableView!
@@ -52,10 +51,10 @@ class SelectLeageViewController: UIViewController, UITableViewDataSource, UITabl
                         cell.leagueLogoImage.image = UIImage(named: "leagueLogo_2.png")
                     }
                     let color = colorHelper.getRandomColor()
-                    league.backgroundColor = color
+//                    league.backgroundColor = color
                     cell.leagueLogoImage.backgroundColor = color
                     cell.currentLeagueRole = currentLeagueRole
-                    currentIndex++
+                    currentIndex += 1
                 }            
                 return cell
             }

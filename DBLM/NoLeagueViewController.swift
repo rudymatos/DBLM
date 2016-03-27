@@ -33,7 +33,7 @@ class NoLeagueViewController: UIViewController {
     func configureView(){
         ImageConfiguration().transformImage(joinNowImageView, shape: Shape.Square(3.0, UIColor.whiteColor()))
         ImageConfiguration().transformImage(newTeamImageView, shape: Shape.Square(3.0, UIColor.whiteColor()))
-        let tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard:")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(NoLeagueViewController.dismissKeyboard(_:)))
         self.view.addGestureRecognizer(tap)
         cancelPanel.hidden = true
         cancelLabel.hidden = true

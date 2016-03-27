@@ -19,7 +19,7 @@ class UserHelper{
     func refreshMemberInfo(){
         let dataQuery = BackendlessDataQuery()
         let queryOptions = QueryOptions()
-        queryOptions.related = ["blUser", "leaguesRoles", "leaguesRoles.league", "leaguesRoles.league.lcode"]
+        queryOptions.related = ["blUser", "leaguesRoles", "leaguesRoles.league", "leaguesRoles.league.lcode", "leaguesRoles.league.days"]
         dataQuery.whereClause = "blUser.objectId = \'\(blInstance.userService.currentUser.objectId)\'"
         dataQuery.queryOptions = queryOptions
         
@@ -47,7 +47,7 @@ class UserHelper{
         if let currentUserID = blInstance.userService.currentUser.objectId{
             let dataQuery = BackendlessDataQuery()
             let queryOptions = QueryOptions()
-            queryOptions.related = ["blUser", "leaguesRoles", "leaguesRoles.league","leaguesRoles.league.lcode"]
+            queryOptions.related = ["blUser", "leaguesRoles", "leaguesRoles.league","leaguesRoles.league.lcode","leaguesRoles.league.days"]
             dataQuery.whereClause = "blUser.objectId = \'\(currentUserID)\'"
             dataQuery.queryOptions = queryOptions
             blInstance.data.of(Member.ofClass()).find(dataQuery, response: { (members : BackendlessCollection!) -> Void in

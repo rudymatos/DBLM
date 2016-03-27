@@ -11,8 +11,11 @@ import UIKit
 class LeagueOptionTableViewCell: UITableViewCell {
     
     
+    
+    @IBOutlet weak var additonalInfo: UILabel!
     @IBOutlet weak var optionLabel: UILabel!
     @IBOutlet weak var optionImage: UIImageView!
+    
     var currentOption : Option? {
         didSet{
             configureView()
@@ -26,9 +29,8 @@ class LeagueOptionTableViewCell: UITableViewCell {
     }
     
     func configureView(){
-        optionLabel.text = currentOption?.name
-        optionImage.image = currentOption?.image
-    
+        optionLabel?.text = currentOption?.name
+        optionImage?.image = currentOption?.image
     }
     
     override func setSelected(selected: Bool, animated: Bool) {

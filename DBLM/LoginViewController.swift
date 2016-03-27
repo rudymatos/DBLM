@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
     
     func configureView(){
         ImageConfiguration().transformImage(loginImageView, shape: Shape.Circle(3.0, UIColor.whiteColor()))
-        let tap = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
     }
     

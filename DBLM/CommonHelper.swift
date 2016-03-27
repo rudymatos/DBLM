@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Firebase
 
 class CommonHelper{
     
@@ -43,5 +42,12 @@ class CommonHelper{
             code.append(letters[letters.startIndex.advancedBy(Int(randomIndex))])
         }
         return code
+    }
+    
+     func getCurrentDateString() -> String{
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = NSDateFormatterStyle.MediumStyle
+        let dateFormatString = formatter.stringFromDate(NSDate())
+        return dateFormatString
     }
 }

@@ -16,6 +16,7 @@ struct Option{
     let description : String?
     let segueName : String?
     let available : Bool?
+    var additionalInfo : String?
     
     init(configurationDictionary : NSDictionary){
         if let nameProperty = configurationDictionary["title"] as? String{

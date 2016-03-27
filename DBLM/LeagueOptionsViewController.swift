@@ -10,16 +10,30 @@ import UIKit
 
 class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    
+    @IBOutlet weak var scheduleStatus: UILabel!
     @IBOutlet weak var leagueLogoImageView: UIImageView!
     @IBOutlet weak var currentUserLabel: UILabel!
     var currentLeagueRole : LeagueRole?
+    private var currentLeague : League?
     private var allOptions = [[Option]]()
     private var sections = [String]()
+    
+    //MARK: HELPERS
+    private let colorHelper = ColorHelper()
+    private let commonHelper = CommonHelper()
     private let userHelper = UserHelper.createStaticInstance
     private let alertHelper = AlertsHelper.createStaticInstance
+    private let blInstance = BackendlessHelper.createInstance.getBackendlessInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureView()
+        initData()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
         configureView()
         initData()
     }
@@ -33,9 +47,9 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
                 sections = ["Member", "Admin"]
             }
             processOptions(currentDefaultRole)
-            if currentLeagueRole?.league?.logoLarge == nil{
+            if currentLeague?.logoLarge == nil{
                 leagueLogoImageView.image = UIImage(named: "imageNotFound")
-                leagueLogoImageView.backgroundColor = currentLeagueRole?.league?.backgroundColor
+                leagueLogoImageView.backgroundColor = ColorHelper().getRandomColor()
                 leagueLogoImageView.contentMode = UIViewContentMode.Center
             }else{
                 leagueLogoImageView.contentMode = UIViewContentMode.ScaleAspectFit
@@ -70,7 +84,7 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBAction func logout(sender: UITapGestureRecognizer) {
         if let currentUser = userHelper.currentMember{
-            CommonHelper().createLogoutConfirmationAlert(currentUser, currentView: self)
+            commonHelper.createLogoutConfirmationAlert(currentUser, currentView: self)
         }
         
     }
@@ -79,10 +93,49 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func configureView(){
+        print("calling this")
         self.automaticallyAdjustsScrollViewInsets = false
         ImageConfiguration().transformImage(leagueLogoImageView, shape: Shape.Square(0.5, UIColor.blackColor()))
         self.title = currentLeagueRole?.league?.name
         currentUserLabel.text = UserHelper.createStaticInstance.userInfoName
+        
+        if let league = currentLeagueRole?.league, let leagueObjectId = league.objectId{
+            
+            self.scheduleStatus.text = "No Schedule found for \(self.commonHelper.getCurrentDateString())"
+            self.scheduleStatus.textColor = self.colorHelper.getAvailableOrUnavailableColor(.Neutral)
+            
+            let dataQuery = BackendlessDataQuery()
+            dataQuery.whereClause = "objectId=\'\(leagueObjectId)\'"
+            let queryOptions = QueryOptions()
+            queryOptions.related = ["days", "lcode"]
+            dataQuery.queryOptions = queryOptions
+            
+            
+            blInstance.data.of(League.ofClass()).find(dataQuery, response: { (results : BackendlessCollection!) in
+                if results.data.count > 0 {
+                    self.currentLeague = results.data[0] as? League
+                    if let days = self.currentLeague?.days{
+                        if days.count > 0{
+                            let dateFormatString = CommonHelper().getCurrentDateString()
+                            for day in days{
+                                if day.dateString == dateFormatString{
+                                    if day.status == "OPEN"{
+                                        self.scheduleStatus.text = "Schedule opened for \(self.commonHelper.getCurrentDateString())"
+                                        self.scheduleStatus.textColor = self.colorHelper.getAvailableOrUnavailableColor(.Available)
+                                    }else{
+                                        self.scheduleStatus.text = "Schedule closed for \(self.commonHelper.getCurrentDateString())"
+                                        self.scheduleStatus.textColor = self.colorHelper.getAvailableOrUnavailableColor(.Unavailable)
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                }, error: { (error :Fault!) in
+                    self.alertHelper.createSimpleNotificationAlert(self, title: "Error loading info", message: "Day info was not loaded correctly. Please contact administrator. Message \(error.message)", shouldDismissCurrentView: false, completion: nil)
+            })
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,11 +145,10 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCellWithIdentifier("leagueOptions", forIndexPath: indexPath) as? LeagueOptionTableViewCell{
-            cell.currentOption = allOptions[indexPath.section][indexPath.row]
-            return cell
-        }
-        return UITableViewCell()
+        var currentCell : LeagueOptionTableViewCell
+        currentCell = (tableView.dequeueReusableCellWithIdentifier("leagueOptionsCell", forIndexPath: indexPath) as? LeagueOptionTableViewCell)!
+        currentCell.currentOption = allOptions[indexPath.section][indexPath.row]
+        return currentCell
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -113,13 +165,13 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "leaveLeagueSegue"{
             let joinLeagueVC = segue.destinationViewController as? JoinLeagueViewController
-            joinLeagueVC?.league = currentLeagueRole?.league
+            joinLeagueVC?.league = currentLeague
         }else if segue.identifier == "generateLCodeSegue" {
             let generateLCodeVC = segue.destinationViewController as? GenerateLCodeViewController
-            generateLCodeVC?.lCodeObjectId = currentLeagueRole?.league?.lcode.objectId
+            generateLCodeVC?.lCodeObjectId = currentLeague?.lcode.objectId
         }else if segue.identifier == "createScheduleSegue" {
             let createScheduleVC = segue.destinationViewController as? CreateScheduleViewController
-            createScheduleVC?.currentLeague = currentLeagueRole?.league
+            createScheduleVC?.currentLeague = currentLeague
         }
     }
     

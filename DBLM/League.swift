@@ -11,6 +11,7 @@ import UIKit
 
 class League: NSObject{
     
+    var objectId: String?
     var name : String?
     var logoLarge : String?
     var logoThumbnail : String?
@@ -18,10 +19,10 @@ class League: NSObject{
     var playOn : String?
     var contact : String?
     var members : [LeagueRole]?
+    var days : [Day]?
     var since  : Int?
     var createdBy : BackendlessUser?
     var lcode : LCode!
-    var backgroundColor : UIColor?
     
 }
 
