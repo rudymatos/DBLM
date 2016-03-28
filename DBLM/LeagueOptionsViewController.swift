@@ -18,6 +18,7 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     private var currentLeague : League?
     private var allOptions = [[Option]]()
     private var sections = [String]()
+    private var currentDay : Day?
     
     //MARK: HELPERS
     private let colorHelper = ColorHelper()
@@ -80,8 +81,6 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    
-    
     @IBAction func logout(sender: UITapGestureRecognizer) {
         if let currentUser = userHelper.currentMember{
             commonHelper.createLogoutConfirmationAlert(currentUser, currentView: self)
@@ -89,11 +88,8 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    
-    
-    
     func configureView(){
-        print("calling this")
+        
         self.automaticallyAdjustsScrollViewInsets = false
         ImageConfiguration().transformImage(leagueLogoImageView, shape: Shape.Square(0.5, UIColor.blackColor()))
         self.title = currentLeagueRole?.league?.name
@@ -107,7 +103,7 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
             let dataQuery = BackendlessDataQuery()
             dataQuery.whereClause = "objectId=\'\(leagueObjectId)\'"
             let queryOptions = QueryOptions()
-            queryOptions.related = ["days", "lcode"]
+            queryOptions.related = ["days", "lcode", "days.confirmedParticipants"]
             dataQuery.queryOptions = queryOptions
             
             
@@ -119,6 +115,7 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
                             let dateFormatString = CommonHelper().getCurrentDateString()
                             for day in days{
                                 if day.dateString == dateFormatString{
+                                    self.currentDay = day
                                     if day.status == "OPEN"{
                                         self.scheduleStatus.text = "Schedule opened for \(self.commonHelper.getCurrentDateString())"
                                         self.scheduleStatus.textColor = self.colorHelper.getAvailableOrUnavailableColor(.Available)
@@ -163,23 +160,40 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "leaveLeagueSegue"{
-            let joinLeagueVC = segue.destinationViewController as? JoinLeagueViewController
-            joinLeagueVC?.league = currentLeague
-        }else if segue.identifier == "generateLCodeSegue" {
-            let generateLCodeVC = segue.destinationViewController as? GenerateLCodeViewController
-            generateLCodeVC?.lCodeObjectId = currentLeague?.lcode.objectId
-        }else if segue.identifier == "createScheduleSegue" {
-            let createScheduleVC = segue.destinationViewController as? CreateScheduleViewController
-            createScheduleVC?.currentLeague = currentLeague
+        if let identifier = segue.identifier{
+            switch(identifier){
+            case "leaveLeagueSegue":
+                let joinLeagueVC = segue.destinationViewController as? JoinLeagueViewController
+                joinLeagueVC?.league = currentLeague
+            case "generateLCodeSegue":
+                let generateLCodeVC = segue.destinationViewController as? GenerateLCodeViewController
+                generateLCodeVC?.lCodeObjectId = currentLeague?.lcode.objectId
+            case "createScheduleSegue":
+                let createScheduleVC = segue.destinationViewController as? CreateScheduleViewController
+                createScheduleVC?.currentLeague = currentLeague
+            case "confirmAssistanceSegue":
+                let confirmAssistance = segue.destinationViewController as? AssistanceConfirmationViewController
+                confirmAssistance?.currentDay = currentDay
+            default:
+                print("no action for segue")
+            }
         }
+        
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if let available = allOptions[indexPath.section][indexPath.row].available, let segueToPerform = allOptions[indexPath.section][indexPath.row].segueName{
             tableView.deselectRowAtIndexPath(indexPath, animated: true)
             if available{
-                performSegueWithIdentifier(segueToPerform, sender: nil)
+                if segueToPerform == "confirmAssistanceSegue"{
+                    if currentDay?.status == "OPEN"{
+                        performSegueWithIdentifier(segueToPerform, sender: nil)
+                    }else{
+                        alertHelper.createSimpleNotificationAlert(self, title: "Confirmation Error", message: "There are not schedule available for today", shouldDismissCurrentView: false, completion: nil)
+                    }
+                }else{
+                    performSegueWithIdentifier(segueToPerform, sender: nil)
+                }
             }else{
                 alertHelper.createSimpleNotificationAlert(self, title: "Not Available", message: "Option is not currently available", shouldDismissCurrentView: false, completion: nil)
             }

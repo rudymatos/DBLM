@@ -25,11 +25,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13/35 Participants Confirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHI-0A-Xuo">
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13/35 Participants Confirmed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yHI-0A-Xuo">
                                 <rect key="frame" x="79" y="66" width="163" height="17"/>
+                                <gestureRecognizers/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" red="0.13333333333333333" green="0.80000000000000004" blue="0.792156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="VLH-4x-GEL" appends="YES" id="I07-Fx-u21"/>
+                                </connections>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F09-Fh-oDp">
                                 <rect key="frame" x="7" y="309" width="306" height="74"/>
@@ -63,6 +67,20 @@
                                     <constraint firstAttribute="width" constant="150" id="wZB-Vf-dFK"/>
                                 </constraints>
                             </imageView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cx9-Xy-mfX">
+                                <rect key="frame" x="111" y="418" width="98" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="98" id="Fj0-oD-1FX"/>
+                                    <constraint firstAttribute="height" constant="30" id="NWw-MV-gQD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="NOT GOING"/>
+                                <connections>
+                                    <action selector="cancelConfirmation:" destination="VVv-Oa-2l1" eventType="touchUpInside" id="9VK-T6-nWW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -70,17 +88,30 @@
                             <constraint firstItem="tqE-eI-7UX" firstAttribute="centerX" secondItem="v9G-mX-VHh" secondAttribute="centerX" id="BCD-1L-ws1"/>
                             <constraint firstItem="tqE-eI-7UX" firstAttribute="top" secondItem="hT3-rh-UzB" secondAttribute="bottom" constant="12" id="G06-t3-sPf"/>
                             <constraint firstItem="dKg-MJ-zIc" firstAttribute="centerX" secondItem="v9G-mX-VHh" secondAttribute="centerX" id="JMO-Ah-UEd"/>
+                            <constraint firstItem="cx9-Xy-mfX" firstAttribute="top" secondItem="F09-Fh-oDp" secondAttribute="bottom" constant="35" id="NHk-cs-C0Q"/>
                             <constraint firstItem="yHI-0A-Xuo" firstAttribute="top" secondItem="tqE-eI-7UX" secondAttribute="bottom" constant="8" id="O40-yP-bpJ"/>
                             <constraint firstItem="F09-Fh-oDp" firstAttribute="top" secondItem="sUW-Ab-Huh" secondAttribute="bottom" constant="32" id="dRG-Ih-2pL"/>
                             <constraint firstItem="sUW-Ab-Huh" firstAttribute="top" secondItem="yHI-0A-Xuo" secondAttribute="bottom" constant="64" id="eE2-jr-mrQ"/>
+                            <constraint firstItem="cx9-Xy-mfX" firstAttribute="centerX" secondItem="v9G-mX-VHh" secondAttribute="centerX" id="gMw-xL-16b"/>
                             <constraint firstItem="sUW-Ab-Huh" firstAttribute="centerX" secondItem="v9G-mX-VHh" secondAttribute="centerX" id="lHs-pq-lLb"/>
                             <constraint firstItem="yHI-0A-Xuo" firstAttribute="centerX" secondItem="v9G-mX-VHh" secondAttribute="centerX" id="opM-Z6-bEd"/>
                             <constraint firstItem="dKg-MJ-zIc" firstAttribute="top" secondItem="F09-Fh-oDp" secondAttribute="bottom" constant="35" id="vGz-kK-4QO"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Assitance" id="030-hC-aXf"/>
+                    <connections>
+                        <outlet property="goingButton" destination="dKg-MJ-zIc" id="xma-Wp-BEK"/>
+                        <outlet property="instructionsText" destination="F09-Fh-oDp" id="Hf1-4j-syR"/>
+                        <outlet property="memberCount" destination="yHI-0A-Xuo" id="1v6-Bs-Idc"/>
+                        <outlet property="notGoingButton" destination="cx9-Xy-mfX" id="fNl-3R-7d3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cXL-eM-h1m" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VLH-4x-GEL">
+                    <connections>
+                        <action selector="showMembers:" destination="VVv-Oa-2l1" id="sU5-99-Hml"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2956" y="1881"/>
         </scene>
