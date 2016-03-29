@@ -36,6 +36,8 @@
 		F5AE3F611C835FA3000DC4B6 /* Role.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE3F601C835FA3000DC4B6 /* Role.swift */; };
 		F5AE3F651C836498000DC4B6 /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE3F641C836498000DC4B6 /* ColorHelper.swift */; };
 		F5AE3F681C8379D1000DC4B6 /* ConfirmPlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5AE3F671C8379D1000DC4B6 /* ConfirmPlayersViewController.swift */; };
+		F5BFC23C1CA951A5009037F1 /* MemberListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5BFC23B1CA951A5009037F1 /* MemberListTableViewCell.swift */; };
+		F5C955A31CA951F80090277F /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C955A21CA951F80090277F /* MemberListViewController.swift */; };
 		F5CE41601C77382200981A15 /* CommonHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE415F1C77382200981A15 /* CommonHelper.swift */; };
 		F5CE41621C773B5300981A15 /* LCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE41611C773B5300981A15 /* LCode.swift */; };
 		F5CE41641C78C63600981A15 /* JoinLeagueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5CE41631C78C63600981A15 /* JoinLeagueViewController.swift */; };
@@ -82,6 +84,8 @@
 		F5AE3F601C835FA3000DC4B6 /* Role.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Role.swift; sourceTree = "<group>"; };
 		F5AE3F641C836498000DC4B6 /* ColorHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 		F5AE3F671C8379D1000DC4B6 /* ConfirmPlayersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmPlayersViewController.swift; sourceTree = "<group>"; };
+		F5BFC23B1CA951A5009037F1 /* MemberListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberListTableViewCell.swift; sourceTree = "<group>"; };
+		F5C955A21CA951F80090277F /* MemberListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
 		F5CE415F1C77382200981A15 /* CommonHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonHelper.swift; sourceTree = "<group>"; };
 		F5CE41611C773B5300981A15 /* LCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LCode.swift; sourceTree = "<group>"; };
 		F5CE41631C78C63600981A15 /* JoinLeagueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinLeagueViewController.swift; sourceTree = "<group>"; };
@@ -240,6 +244,7 @@
 		F5AC06E51C7F8EB300032DAF /* League */ = {
 			isa = PBXGroup;
 			children = (
+				F5BFC23A1CA95188009037F1 /* Generic Views */,
 				F524A15E1CA0FEB300B74E6E /* Member */,
 				F5AE3F661C8379BC000DC4B6 /* Admin */,
 				F5AC06E61C7F8ED500032DAF /* LeagueOptionsViewController.swift */,
@@ -256,6 +261,15 @@
 				F5E7C2C31C8B2F7100CE0A08 /* CreateScheduleViewController.swift */,
 			);
 			name = Admin;
+			sourceTree = "<group>";
+		};
+		F5BFC23A1CA95188009037F1 /* Generic Views */ = {
+			isa = PBXGroup;
+			children = (
+				F5BFC23B1CA951A5009037F1 /* MemberListTableViewCell.swift */,
+				F5C955A21CA951F80090277F /* MemberListViewController.swift */,
+			);
+			name = "Generic Views";
 			sourceTree = "<group>";
 		};
 		F5E7C2C81C8B350500CE0A08 /* Exceptions */ = {
@@ -431,6 +445,7 @@
 				F505A12E1C70FDDB005D5CE7 /* AssistanceConfirmationViewController.swift in Sources */,
 				F5F1E2F81C884D55007B3CA9 /* GenerateLCodeViewController.swift in Sources */,
 				F5D7F7A01C869ED600E4A34F /* UserHelper.swift in Sources */,
+				F5C955A31CA951F80090277F /* MemberListViewController.swift in Sources */,
 				F52BF0E91C7D5CBF00607BE8 /* SelectLeagueTableViewCell.swift in Sources */,
 				F5CE41601C77382200981A15 /* CommonHelper.swift in Sources */,
 				F594D7D41C739407008FC054 /* CreateNewAccountViewController.swift in Sources */,
@@ -452,6 +467,7 @@
 				F592F16E1C77241A00096772 /* AlertsHelper.swift in Sources */,
 				F55239B11C7001E40042AF28 /* AppDelegate.swift in Sources */,
 				F505A1341C7117E2005D5CE7 /* NetworkConnection.swift in Sources */,
+				F5BFC23C1CA951A5009037F1 /* MemberListTableViewCell.swift in Sources */,
 				F594D7CF1C7384D4008FC054 /* LoginViewController.swift in Sources */,
 				F5AE3F5F1C835E2A000DC4B6 /* Member.swift in Sources */,
 				F52E89C11C9238170081EF6B /* BackendlessHelper.swift in Sources */,

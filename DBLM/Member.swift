@@ -15,11 +15,11 @@ class Member : NSObject{
     var objectId: String?
     var blUser : BackendlessUser?
     var username : String?
+    var firstname : String?
+    var lastname : String?
     var mobilePhone : String?
     var largeProfilePicture : String?
     var thumbnailProfilePicture : String?
     var leaguesRoles : [LeagueRole]?
-    
-    
     
 }

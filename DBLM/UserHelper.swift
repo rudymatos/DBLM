@@ -35,7 +35,7 @@ class UserHelper{
         
     }
     var userInfoName : String?{
-        if let firstname = blInstance.userService.currentUser.getProperty("firstname") as? String, let lastname = blInstance.userService.currentUser.getProperty("lastname") as? String{
+        if let firstname = currentMember?.firstname, let lastname = currentMember?.lastname{
             return firstname + " "+lastname
         }else{
             return "NOT AVAILABLE"

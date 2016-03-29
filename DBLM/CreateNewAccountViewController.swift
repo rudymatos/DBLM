@@ -43,12 +43,11 @@ class CreateNewAccountViewController: UIViewController {
             user.email = email
             user.password = password
             
-            user.setProperty("firstname", object: firstname)
-            user.setProperty("lastname", object: lastname)
-            
             let member = Member()
             member.username = email
             member.blUser = user
+            member.firstname = firstname
+            member.lastname = lastname
             
             blInstance.userService.registering(user, response: { (registeredUser : BackendlessUser!) -> () in
                 let dataStore = self.blInstance.data.of(Member.ofClass())

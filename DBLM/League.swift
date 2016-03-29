@@ -21,7 +21,7 @@ class League: NSObject{
     var members : [LeagueRole]?
     var days : [Day]?
     var since  : Int?
-    var createdBy : BackendlessUser?
+    var createdBy : Member?
     var lcode : LCode!
     
 }

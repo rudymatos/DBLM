@@ -29,9 +29,24 @@ class AssistanceConfirmationViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "confirmedParticipantsSegue"{
+            if let membersConfirmed =  currentDay.confirmedParticipants{
+                if let mvc = segue.destinationViewController as? MemberListViewController{
+                    mvc.membersToShow = membersConfirmed
+                }
+            }
+        }
+    }
+    
     @IBAction func showMembers(sender: UITapGestureRecognizer) {
-        print("here")
-        alertHelper.createSimpleNotificationAlert(self, title: "Showing users", message: "showing users", shouldDismissCurrentView: false, completion: nil)
+        if let membersConfirmed =  currentDay.confirmedParticipants{
+            if membersConfirmed.count > 0{
+                performSegueWithIdentifier("confirmedParticipantsSegue", sender: nil)
+            }else{
+                alertHelper.createSimpleNotificationAlert(self, title: "No Participants", message: "No members has confirmed participation yet", shouldDismissCurrentView: false, completion: nil)
+            }
+        }
     }
     
     func configureView(){

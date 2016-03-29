@@ -46,13 +46,11 @@ class CreateNewLeagueViewController: UIViewController {
             let name  = teamNameLabel.text!
             let address = teamAddressLabel.text!
             let playOn = playOnLabel.text!
-            let blUser = blInstance.userService.currentUser
             
             let newLeague = League()
             newLeague.name = name
             newLeague.address = address
             newLeague.playOn = playOn
-            newLeague.createdBy = blUser
             let lcode = LCode()
             lcode.code = CommonHelper().generateLCode()
             lcode.createdOn = NSDate()
@@ -73,6 +71,7 @@ class CreateNewLeagueViewController: UIViewController {
                             member.leaguesRoles = [LeagueRole]()
                         }
                         member.leaguesRoles?.append(leagueRole)
+                        newLeague.createdBy = member
                         self.blInstance.data.of(Member.ofClass()).save(member, response: { (updatedMember : AnyObject!) -> Void in
                             self.performSegueWithIdentifier("selectLeagueSegue", sender: nil)
                             }, error: { (error:Fault!) -> Void in
