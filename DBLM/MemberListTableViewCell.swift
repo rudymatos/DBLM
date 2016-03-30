@@ -15,7 +15,8 @@ class MemberListTableViewCell: UITableViewCell {
     @IBOutlet weak var playerRoleLabel: UILabel!
     @IBOutlet weak var playerNameLabel: UILabel!
     @IBOutlet weak var playerImageView: UIImageView!
-    var member : Member?{
+    private let userHelper  = UserHelper.createStaticInstance
+    var leagueMember : (currentLeague : League, currentMember: Member)?{
         didSet{
             configureView()
         }
@@ -32,14 +33,24 @@ class MemberListTableViewCell: UITableViewCell {
     func configureView(){
         
         imageConfigurator.transformImage(playerImageView, shape: Shape.Circle(0.5, UIColor.blackColor()))
-//        imageConfigurator.transformImage(playerPositionImageView, shape: Shape.Square(3.0, UIColor.whiteColor()))
-//        imageConfigurator.transformImage(playerNumberImageView, shape: Shape.Square(3.0, UIColor.whiteColor()))
-        
-        if member != nil{
-            playerNameLabel?.text = (member?.firstname)! + " " + (member?.lastname)!
-//            member.le
+        if leagueMember != nil{
+            playerNameLabel?.text = (leagueMember?.currentMember.firstname)! + " " + (leagueMember?.currentMember.lastname)!
+            for leagueRole in (leagueMember?.currentMember.leaguesRoles)!{
+                
+                if let leagueObjectId = leagueRole.league?.name, let currentLeagueObjectId = leagueMember?.currentLeague.name{
+                    print("entering here")
+                    print("checking league role : \(leagueObjectId)")
+                    print("checking current league : \(currentLeagueObjectId)")
+                    if leagueObjectId == currentLeagueObjectId{
+                        playerPositionLabel?.text = leagueRole.playerPosition
+                        playerNumberLabel?.text = "\(leagueRole.playerNumber!)"
+                        playerRoleLabel?.text = leagueRole.role
+                        break
+                    }
+                }
+                
+            }
         }
-        
         
     }
     

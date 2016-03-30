@@ -11,7 +11,7 @@ import UIKit
 class MemberListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var memberListTableView: UITableView!
-    var membersToShow :[Member]?
+    var leagueMembersToShow :(currentLeague : League, currentMembersToShow : [Member])?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,8 @@ class MemberListViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCellWithIdentifier("playerBasicInfoCell", forIndexPath: indexPath) as? MemberListTableViewCell{
-            cell.member = membersToShow?[indexPath.row]
+            let leagueMember = (currentLeague : (leagueMembersToShow?.currentLeague)!, currentMember : (leagueMembersToShow?.currentMembersToShow[indexPath.row])!)
+            cell.leagueMember = leagueMember
             return cell
         }else{
             return UITableViewCell()
@@ -45,7 +46,7 @@ class MemberListViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return (membersToShow?.count)!
+        return (leagueMembersToShow?.currentMembersToShow.count)!
     }
     
     

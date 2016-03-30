@@ -13,6 +13,11 @@ class CommonHelper{
     private let blInstance = BackendlessHelper.createInstance.getBackendlessInstance()
     private let alertHelper = AlertsHelper.createStaticInstance
     
+    
+    static let createStaticInstance = CommonHelper()
+    var currentLeague : League?
+    
+    
     private func logoutUser(user:Member, currentView : UIViewController){
         blInstance.userService.logout({ (response:AnyObject!) -> Void in
             let loginView = currentView.storyboard?.instantiateViewControllerWithIdentifier("loginView")

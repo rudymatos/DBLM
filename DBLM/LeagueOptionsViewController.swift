@@ -93,7 +93,7 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
         self.automaticallyAdjustsScrollViewInsets = false
         ImageConfiguration().transformImage(leagueLogoImageView, shape: Shape.Square(0.5, UIColor.blackColor()))
         self.title = currentLeagueRole?.league?.name
-        currentUserLabel.text = UserHelper.createStaticInstance.userInfoName
+        currentUserLabel.text = userHelper.userInfoName
         
         if let league = currentLeagueRole?.league, let leagueObjectId = league.objectId{
             
@@ -103,7 +103,7 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
             let dataQuery = BackendlessDataQuery()
             dataQuery.whereClause = "objectId=\'\(leagueObjectId)\'"
             let queryOptions = QueryOptions()
-            queryOptions.related = ["days", "lcode", "days.confirmedParticipants"]
+            queryOptions.related = ["days", "lcode", "days.confirmedParticipants", "days.confirmedParticipants.leaguesRoles", "days.confirmedParticipants.leaguesRoles.league"]
             dataQuery.queryOptions = queryOptions
             
             
@@ -173,7 +173,8 @@ class LeagueOptionsViewController: UIViewController, UITableViewDataSource, UITa
                 createScheduleVC?.currentLeague = currentLeague
             case "confirmAssistanceSegue":
                 let confirmAssistance = segue.destinationViewController as? AssistanceConfirmationViewController
-                confirmAssistance?.currentDay = currentDay
+                let leagueDay = (currentDay: currentDay!, currentLeague: currentLeague!)
+                confirmAssistance?.leagueDay = leagueDay
             default:
                 print("no action for segue")
             }
